@@ -13,7 +13,7 @@ Vote.delete_all
 
 5.times do
 
-  User.create(:user_name => Faker::Internet.user_name,
+  User.create(:username => Faker::Internet.user_name,
               :email => Faker::Internet.email ,
               :hashed_password =>'password')
 end
@@ -23,7 +23,7 @@ end
 
   Question.create(:title => Faker::Lorem.sentence,
                     :body => Faker::Lorem.paragraph,
-                    :user_id => rand(1..5)
+                    :user_id => rand(1..5),
                     :best_answer_id => nil
                     )
 end
@@ -32,8 +32,8 @@ end
 
 5.times do
   Answer.create(:body => Faker::Lorem.paragraph,
-                :user_id => rand(1..5)
-                :question_id => rand(1..5),
+                :user_id => rand(1..5),
+                :question_id => rand(1..5)
                 )
 end
 
@@ -52,8 +52,9 @@ end
 
 5.times do
   Vote.create(:value => [1,-1].sample,
-              :voteable_id => rand(1..5),
+              :votable_id => rand(1..5),
               :user_id => rand(1..5)
+              )
 
 end
 
