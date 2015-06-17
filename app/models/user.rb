@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :comments
 
-  validates :email, uniqueness: true
-  validates :username, uniqueness: true
+  validates :email, {uniqueness: true, presence: true}
+  validates :username, {uniqueness: true, presence: true}
 end
