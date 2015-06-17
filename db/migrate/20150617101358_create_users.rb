@@ -7,3 +7,7 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
+
+def self.authenticate
+  hashed_password == BCrypt::pw(entered_password)
+end

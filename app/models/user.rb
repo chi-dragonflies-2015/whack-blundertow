@@ -3,4 +3,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   has_many :comments
+
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
 end
