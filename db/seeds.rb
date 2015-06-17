@@ -45,6 +45,7 @@ end
                 :user_id => rand(1..5),
                 :commentable_id => rand(1..5)
                 )
+
 end
 
 
