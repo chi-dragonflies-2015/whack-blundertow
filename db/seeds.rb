@@ -24,7 +24,7 @@ end
   Question.create(:title => Faker::Lorem.sentence,
                     :body => Faker::Lorem.paragraph,
                     :user_id => rand(1..5)
-                    :best_answer_id.......
+                    :best_answer_id => nil
                     )
 end
 
@@ -32,7 +32,7 @@ end
 
 5.times do
   Answer.create(:body => Faker::Lorem.paragraph,
-                :user_ud => rand(1..5)
+                :user_id => rand(1..5)
                 :question_id => rand(1..5),
                 )
 end
