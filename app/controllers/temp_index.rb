@@ -4,7 +4,10 @@ get "/" do
 end
 
 get "/question" do
-  @question = Question.find(1)
+  @question = Question.find(3)
+  @q_comments = @question.comments
+  @answers = @question.answers
+
 
   erb :"question"
 end
