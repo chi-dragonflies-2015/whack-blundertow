@@ -8,6 +8,7 @@ Vote.delete_all
 
 
 
+
 #seed users
 
 5.times do
