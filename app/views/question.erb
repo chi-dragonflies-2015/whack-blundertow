@@ -53,7 +53,7 @@
 </div>
 
 <div class="new_answer">
-  <form id="answer_comment" method="post" action="/posts">
+  <form id="answer_comment" method="post" action="/questions/<%= @question.id %>/answers">
     <input type="text" id="new_comment" name="answer" placeholder="new answer">
     <input type="submit" value="answer">
   </form>

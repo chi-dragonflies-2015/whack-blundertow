@@ -1,13 +1,14 @@
+get '/questions/new' do
+  erb :"question_new"
+  #return a partial that represents the new question form
+end
+
 get '/questions/:question_id' do
   @question = Question.find_by(id: params[:question_id])
   @q_comments = @question.comments
   @answers = @question.answers
   erb :"question"
 end
-
-  get '/questions/new' do
-    #return a partial that represents the new question form
-  end
 
 post '/questions' do
   if session[:user_id]
