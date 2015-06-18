@@ -22,10 +22,14 @@
   </a>
 
 <div class="question_body">
-  <h4><%= @question.title %></h4>
+  <h3><%= @question.title %></h3>
+  <h4><%= @question.body %></h4>
+  <h5>asked by <%= @question.user.username %></h5>
     </div>
       <% @q_comments.each do |comment| %>
       <p><%= comment.body %></p>
+      <p>- <%= comment.user.username %></p>
+
       <% end %>
 
 
@@ -64,9 +68,10 @@
     </div>
     </a>
     <h4><%= answer.body %></h4>
-
+    <h5>By: <%=answer.user.username%></h5>
     <% answer.comments.each do |comment| %>
-      <p><%= comment.body %> </p>
+      <h5><%= comment.body %> </h5>
+      <p>-<%= comment.user_id.username %></p>
     <% end %>
   <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
     <input type="text" id="new_comment" name="body" placeholder="comment">
