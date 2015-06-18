@@ -1,3 +1,8 @@
+get '/questions/new' do
+    erb :"ask_question"
+end
+
+
 get '/questions/:question_id' do
   @question = Question.find_by(id: params[:question_id])
   @q_comments = @question.comments
@@ -5,14 +10,17 @@ get '/questions/:question_id' do
   erb :"question"
 end
 
-  get '/questions/new' do
-    #return a partial that represents the new question form
-  end
-
 post '/questions' do
   if session[:user_id]
     this_user = User.find_by(id: session[:user_id])
     this_question = Question.new(title: params[:title], body: params[:body], user_id: session[:user_id])
+    if this_question.save
+      redirect "/"
+    else
+      @errors = 'please ask a valid question'
+      erb :"ask_question"
+    end
+
     #return a partial for adding a question to the top of the list
     #use delegation to make these links work even before they get refreshed
   else
