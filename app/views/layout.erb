@@ -18,8 +18,13 @@
   <title></title>
 </head>
 <body>
-
-  <%= erb :'shared/logged-in-header' %>
+  <div class="header">
+    <% if session[:user_id] %>
+      <%= erb :'shared/_logged-in-header' %>
+    <% else %>
+      <%= erb :'shared/_logged-out-header' %>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>

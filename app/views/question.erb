@@ -18,8 +18,8 @@
       <% end %>
 
 
-    <form id="question_comment" method="post" action="/posts">
-      <input type="text" id="new_comment" name="comment" placeholder="comment">
+    <form id="question_comment" method="post" action="/questions/<%= @question.id %>/comments">
+      <input type="text" id="new_comment" name="body" placeholder="comment">
       <input type="submit" value="comment">
     </form>
 
@@ -30,24 +30,24 @@
 <div class="answer">
 
   <% @answers.each do |answer| %>
-  <a href="/vote">
-  <div class='arrow-up'>
-  </div>
-  </a>
-  <a href="vote/">
-  <div class='arrow-down'>
-  </div>
-  </a>
-  <h4><%= answer.body %></h4>
+    <a href="/vote">
+    <div class='arrow-up'>
+    </div>
+    </a>
+    <a href="vote/">
+    <div class='arrow-down'>
+    </div>
+    </a>
+    <h4><%= answer.body %></h4>
 
-  <% answer.comments.each do |comment| %>
-    <p><%= comment.body %> </p>
+    <% answer.comments.each do |comment| %>
+      <p><%= comment.body %> </p>
     <% end %>
-  <% end %>
-  <form id="answer_comment" method="post" action="/posts">
+  <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
     <input type="text" id="new_comment" name="comment" placeholder="comment">
     <input type="submit" value="comment">
   </form>
+  <% end %>
 
 
 </div>
