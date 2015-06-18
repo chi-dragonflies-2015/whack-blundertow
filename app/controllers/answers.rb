@@ -16,7 +16,10 @@ end
 post '/questions/:question_id/answers' do
   if session[:user_id]
     @question = Question.find_by(id: params[:question_id])
-    @question.answers << Answer.create(body: params[:body])
+    user = User.find_by(id: session[:user_id])
+    new_answer = Answer.create(body: params[:body])
+    @question.answers << new_answer
+    user.answers << new_answer
     redirect "/questions/#{@question.id}"
   else
     @errors = "You must be logged in to do that"
