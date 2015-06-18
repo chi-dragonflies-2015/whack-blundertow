@@ -1,5 +1,7 @@
 <div class="container">
-
+ <% if @errors %>
+    <p class="errors"><%= @errors %></p>
+  <% end %>
 
 <div class="question_container">
   <a href="/vote">
