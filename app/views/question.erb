@@ -1,19 +1,28 @@
 <div class="container">
- <% if @errors %>
+  <% if @errors %>
     <p class="errors"><%= @errors %></p>
   <% end %>
 
+
+
 <div class="question_container">
-  <a href="/vote">
-  <div class='arrow-up'>
-  </div>
+  <a href="/questions/<%= @question.id %>/votes/1">
+    <div class='arrow-up'>
+    </div>
   </a>
-  <a href="vote/">
-  <div class='arrow-down'>
-  </div>
+
+<div class="vote_count">
+  <p>15</p>
+</div>
+
+
+  <a href="/questions/<%= @question.id %>/votes/-1">
+    <div class='arrow-down'>
+    </div>
   </a>
-    <div class="question_body">
-      <h4><%= @question.title %></h4>
+
+<div class="question_body">
+  <h4><%= @question.title %></h4>
     </div>
       <% @q_comments.each do |comment| %>
       <p><%= comment.body %></p>
@@ -36,6 +45,10 @@
     <div class='arrow-up'>
     </div>
     </a>
+
+    <div class="vote_count">
+      <p>15</p>
+    </div>
     <a href="vote/">
     <div class='arrow-down'>
     </div>
