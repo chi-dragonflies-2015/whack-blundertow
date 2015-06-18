@@ -20,7 +20,8 @@ post '/users' do
   if this_user.save
     session[:user_id] = this_user.id
   else
-    @questions = Question.all
+    @errors = "You need to try again"
   end
+  @questions = Question.all
   erb :index
 end
