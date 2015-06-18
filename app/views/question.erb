@@ -1,19 +1,28 @@
 <div class="container">
- <% if @errors %>
+  <% if @errors %>
     <p class="errors"><%= @errors %></p>
   <% end %>
 
+
+
 <div class="question_container">
-  <a href="/vote">
-  <div class='arrow-up'>
-  </div>
+  <a href="/questions/<%= @question.id %>/votes/1">
+    <div class='arrow-up'>
+    </div>
   </a>
-  <a href="/vote">
-  <div class='arrow-down'>
-  </div>
+
+<div class="vote_count">
+  <p><%=Vote.total(@question) %></p>
+</div>
+
+
+  <a href="/questions/<%= @question.id %>/votes/-1">
+    <div class='arrow-down'>
+    </div>
   </a>
-    <div class="question_body">
-      <h4><%= @question.title %></h4>
+
+<div class="question_body">
+  <h4><%= @question.title %></h4>
     </div>
       <% @q_comments.each do |comment| %>
       <p><%= comment.body %></p>
@@ -30,7 +39,6 @@
 </div>
 
 <div class="answer">
-
   <% @answers.each do |answer| %>
     <div>
       <% if @mode == "has a best" %>
@@ -41,11 +49,17 @@
         <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
       <% end %>
     </div>
-    <a href="/vote">
+    <a href="/answers/<%= answer.id %>/votes/1">
     <div class='arrow-up'>
     </div>
     </a>
-    <a href="/vote">
+
+     <div class="vote_count">
+      <p><%= Vote.total(answer) %></p>
+    </div>
+
+
+    <a href="/answers/<%= answer.id %>/votes/-1">
     <div class='arrow-down'>
     </div>
     </a>
