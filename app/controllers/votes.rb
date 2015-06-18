@@ -10,7 +10,7 @@ get '/questions/:question_id/votes/:value' do
       @errors = "You already voted on this issue"
       redirect "/"
     end
-  elsif
+  elsif ###gettting a warning message here. thinking we need to set a conditional here
     @errors = "You are not logged in"
     redirect "/"
   end
@@ -28,7 +28,7 @@ get '/answer/:answer_id/votes/:value' do
       @errors = "You already voted on this issue"
       redirect "/"
     end
-  elsif
+  elsif ###gettting a warning message here
     @errors = "You are not logged in"
     redirect "/"
   end
