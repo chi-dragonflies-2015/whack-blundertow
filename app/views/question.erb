@@ -12,7 +12,7 @@
   </a>
 
 <div class="vote_count">
-  <p><%=Vote.total(@question) %></p>
+  <p id = "vote_for_questions"><%=Vote.total(@question) %></p>
 </div>
 
 
@@ -53,17 +53,17 @@
         <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
       <% end %>
     </div>
-    <a href="/answers/<%= answer.id %>/votes/1">
+    <a href="/answers/<%= answer.id %>/votes/1" class="num<%= answer.id %>">
     <div class='arrow-up'>
     </div>
     </a>
 
      <div class="vote_count">
-      <p><%= Vote.total(answer) %></p>
+      <p class="num<%= answer.id %>"><%= Vote.total(answer) %></p>
     </div>
 
 
-    <a href="/answers/<%= answer.id %>/votes/-1">
+    <a href="/answers/<%= answer.id %>/votes/-1" class="num<%= answer.id %>">
     <div class='arrow-down'>
     </div>
     </a>
@@ -71,7 +71,7 @@
     <h5>By: <%=answer.user.username%></h5>
     <% answer.comments.each do |comment| %>
       <h5><%= comment.body %> </h5>
-      <p>-<%= comment.user_id.username %></p>
+      <p>-<%= comment.user.username %></p>
     <% end %>
   <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
     <input type="text" id="new_comment" name="body" placeholder="comment">
