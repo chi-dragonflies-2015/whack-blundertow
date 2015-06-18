@@ -11,9 +11,14 @@ get '/answers/:answer_id/best' do
   end
 end
 
-
 post '/questions/:question_id/answers' do
-  @question = Question.find_by(id: params[:question_id])
-  @question.answers << Answer.create(body: params[:body])
-  redirect "/questions/#{@question.id}"
+  if session[:user_id]
+    @question = Question.find_by(id: params[:question_id])
+    @question.answers << Answer.create(body: params[:body])
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = "You must be logged in to do that"
+    @questions = Question.all
+    erb :index
+  end
 end
