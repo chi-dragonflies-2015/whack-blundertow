@@ -10,4 +10,11 @@ class Vote < ActiveRecord::Base
   def self.allowed_to_vote(current_user, current_votable)
     !current_votable.voters.include?(current_user)
   end
+
+  def self.total(item)
+    sum = 0
+    item.votes.each {|vote| sum += vote.value}
+    sum
+  end
+
 end
