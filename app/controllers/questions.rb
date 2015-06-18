@@ -2,6 +2,15 @@ get '/questions/new' do
     erb :"ask_question"
 end
 
+# get '/questions/:question_id/answers/:answer_id/best' do
+#   this_question = Question.find_by(id: params[:question_id])
+#   this_user = User.find_by(id: session[:user_id])
+#   if this_user && this_question.user == this_user
+#     this_question.best_answer_id = params[:answer_id]
+#   end
+#   redirect "/questions/#{question.id}"
+# end
+
 
 get '/questions/:question_id' do
   @question = Question.find_by(id: params[:question_id])

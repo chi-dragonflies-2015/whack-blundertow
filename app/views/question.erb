@@ -38,9 +38,7 @@
           <img src = "dumbpic">
         <% end %>
       <% elsif @mode == "pick a best" %>
-        <a href = "/questions/#{@question.id}/best">This Is The Best Answer I've Ever Seen!!!</a>
-      <% else %>
-
+        <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
       <% end %>
     </div>
     <a href="/vote">
