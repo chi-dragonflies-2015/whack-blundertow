@@ -44,7 +44,7 @@
       <p><%= comment.body %> </p>
     <% end %>
   <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
-    <input type="text" id="new_comment" name="comment" placeholder="comment">
+    <input type="text" id="new_comment" name="body" placeholder="comment">
     <input type="submit" value="comment">
   </form>
   <% end %>
@@ -53,8 +53,8 @@
 </div>
 
 <div class="new_answer">
-  <form id="answer_comment" method="post" action="/posts">
-    <input type="text" id="new_comment" name="answer" placeholder="new answer">
+  <form id="answer_comment" method="post" action="/questions/<%= @question.id %>/answers">
+    <input type="text" id="new_comment" name="body" placeholder="new answer">
     <input type="submit" value="answer">
   </form>
 

@@ -10,3 +10,10 @@ get '/answers/:answer_id/best' do
     redirect "/index"
   end
 end
+
+
+post '/questions/:question_id/answers' do
+  @question = Question.find_by(id: params[:question_id])
+  @question.answers << Answer.create(body: params[:body])
+  redirect "/questions/#{@question.id}"
+end
