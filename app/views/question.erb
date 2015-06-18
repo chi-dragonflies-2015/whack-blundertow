@@ -1,5 +1,7 @@
 <div class="container">
-
+ <% if @errors %>
+    <p class="errors"><%= @errors %></p>
+  <% end %>
 
 <div class="question_container">
   <a href="/vote">
@@ -44,7 +46,7 @@
       <p><%= comment.body %> </p>
     <% end %>
   <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
-    <input type="text" id="new_comment" name="comment" placeholder="comment">
+    <input type="text" id="new_comment" name="body" placeholder="comment">
     <input type="submit" value="comment">
   </form>
   <% end %>
@@ -54,7 +56,7 @@
 
 <div class="new_answer">
   <form id="answer_comment" method="post" action="/questions/<%= @question.id %>/answers">
-    <input type="text" id="new_comment" name="answer" placeholder="new answer">
+    <input type="text" id="new_comment" name="body" placeholder="new answer">
     <input type="submit" value="answer">
   </form>
 

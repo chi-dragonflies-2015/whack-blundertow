@@ -1,0 +1,12 @@
+<div class='new_question'>
+ <% if @errors %>
+    <p class="errors"><%= @errors %></p>
+  <% end %>
+<form method="post" action="/questions">
+    <input type="text" name="title" placeholder="title">
+    <input type="textarea" cols="200" rows="200" name="body" placeholder="body">
+    <input type="submit" value="Ask!">
+    <input type="hidden" value="all questions" name="from">
+</form>
+
+</div>
