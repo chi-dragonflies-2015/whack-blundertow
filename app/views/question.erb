@@ -35,7 +35,7 @@
     <div>
       <% if @mode == "has a best" %>
         <% if answer.id == @question.best_answer_id %>
-          <img src = "dumbpic">
+          <img src = "<%= APP_ROOT %>/public/nick.jpg">
         <% end %>
       <% elsif @mode == "pick a best" %>
         <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
