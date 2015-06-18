@@ -8,7 +8,7 @@
   <div class='arrow-up'>
   </div>
   </a>
-  <a href="vote/">
+  <a href="/vote">
   <div class='arrow-down'>
   </div>
   </a>
@@ -32,11 +32,22 @@
 <div class="answer">
 
   <% @answers.each do |answer| %>
+    <div>
+      <% if @mode == "has a best" %>
+        <% if answer.id == @question.best_answer_id %>
+          <img src = "dumbpic">
+        <% end %>
+      <% elsif @mode == "pick a best" %>
+        <a href = "/questions/#{@question.id}/best">This Is The Best Answer I've Ever Seen!!!</a>
+      <% else %>
+
+      <% end %>
+    </div>
     <a href="/vote">
     <div class='arrow-up'>
     </div>
     </a>
-    <a href="vote/">
+    <a href="/vote">
     <div class='arrow-down'>
     </div>
     </a>
