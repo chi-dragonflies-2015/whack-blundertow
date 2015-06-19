@@ -1,4 +1,5 @@
 <div class="container">
+<div class="contentsection">
   <% if @errors %>
     <p class="errors"><%= @errors %></p>
   <% end %>
@@ -6,6 +7,8 @@
 
 
 <div class="question_container">
+
+  <div class="question_arrows">
     <a href="/questions/<%= @question.id %>/votes/1">
       <div class='arrow-up'>
       </div>
@@ -20,6 +23,7 @@
       <div class='arrow-down'>
       </div>
     </a>
+  </div>
 
   <div class="question_body">
     <h3><%= @question.title %></h3>
@@ -44,43 +48,50 @@
 </div>
 
 <div class="answer">
+  <div class="answer_comment_separator">
   <% @answers.each do |answer| %>
       <div>
         <% if @mode == "has a best" %>
           <% if answer.id == @question.best_answer_id %>
-            <img src = "<%= APP_ROOT %>/public/nick.jpg">
+            <img src = "nick.jpg">
           <% end %>
         <% elsif @mode == "pick a best" %>
           <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
         <% end %>
       </div>
-      <a href="/answers/<%= answer.id %>/votes/1" class="num<%= answer.id %>">
-      <div class='arrow-up'>
-      </div>
-      </a>
+      <div class="arrows">
+        <a href="/answers/<%= answer.id %>/votes/1" class="num<%= answer.id %>">
+        <div class='arrow-up'>
+        </div>
+        </a>
 
-       <div class="vote_count">
-        <p class="num<%= answer.id %>"><%= Vote.total(answer) %></p>
-      </div>
+         <div class="vote_count">
+          <p class="num<%= answer.id %>"><%= Vote.total(answer) %></p>
+        </div>
 
 
-      <a href="/answers/<%= answer.id %>/votes/-1" class="num<%= answer.id %>">
-      <div class='arrow-down'>
+        <a href="/answers/<%= answer.id %>/votes/-1" class="num<%= answer.id %>">
+        <div class='arrow-down'>
+        </div>
+        </a>
       </div>
-      </a>
       <h4><%= answer.body %></h4>
-      <h5>By: <%=answer.user.username%></h5>
+      <h5>By: <%= answer.user.username %></h5>
+    </div>
 
-    <div class="answer<%= answer.id %>">
+    <div class="answer<%= answer.id %> answer_container">
       <% answer.comments.each do |comment| %>
+      <div class="comment_content">
         <h5><%= comment.body %> </h5>
         <p>-<%= comment.user.username %></p>
+      </div>
       <% end %>
+    </div>
+
       <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
         <input type="text" id="new_comment" name="body" placeholder="comment" class="answer<%= answer.id %>">
         <input type="submit" value="comment" class="answer_comment_button">
       </form>
-    </div>
   <% end %>
 
 
@@ -98,7 +109,7 @@
 </div>
 
 
-
+</div>
 
 </div>
 

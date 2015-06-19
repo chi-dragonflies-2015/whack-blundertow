@@ -11,8 +11,9 @@ post '/questions/:question_id/comments' do
 
     erb :"shared/_comments", layout: false, locals: {comment: this_comment}
   else
-    @errors = "You are not logged in"
-    redirect "/"
+    # @errors = "You are not logged in"
+    # redirect "/"
+    nil
   end
 end
 post '/answers/:answer_id/comments' do
@@ -25,7 +26,7 @@ post '/answers/:answer_id/comments' do
     erb :"shared/_comments", layout: false, locals: {comment: this_comment}
 
   else
-    @errors = "You are not logged in"
-    redirect "/"
+    # @errors = "You are not logged in"
+    # redirect "/"
   end
 end
