@@ -6,14 +6,12 @@
       <h1>All Questions on Whack Blundertow</h1>
   </div>
   <div class="contentsection">
-    <ul>
-      <% @questions.each do |question| %>
-          <li>
-            <a href="/questions/<%= question.id %>">
-              <%=question.title %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
+    <% @questions.each do |question| %>
+        <p>
+          <a href="/questions/<%= question.id %>">
+            <%=question.title %>
+          </a>
+        </p>
+      <% end %>
   </div>
 </div>

@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".answer").on('click', 'a', function(event){
+  $(".arrows a").on('click', function(event){
     event.preventDefault();
     var ajxUrl = ($(this).attr("href"));
     var pId = ($(this).attr("class"));

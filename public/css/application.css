@@ -1,13 +1,23 @@
+html {
+  background-color: #999999;
+}
+
 .container {
   width: 50%;
   margin: auto;
 }
 
+.contentsection {
+  border: thin gray solid;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: rgb(245, 224, 185);
+}
+
 .question_container {
-  background: rgba(187, 183, 183, 0.46);
+  background: rgba(55, 68, 233, 0.36);
   margin-bottom: 25px;
-  padding-left: 4px;
-  padding-bottom: 10px;
+  padding: 2em;
   border-bottom: thin dotted gray ;
 }
 
@@ -41,6 +51,89 @@
   border-top: 10px solid rgb(179, 57, 57);
 }
 
+.vote_count p {
+  margin-left: 3px;
+  font-size: 1.5em;
+}
+
+.arrows{
+  display: inline;
+  float: left;
+  margin-right: 5em;
+  margin-bottom: 2em;
+}
+
+.question_arrows {
+  display: inline;
+  float: left;
+  padding: 3em 3em 3em 1em;
+}
+
+.answer_container {
+  clear: both;
+}
 .answer{
   border: thin dotted gray;
+  padding: 2em;
+}
+
+.comment_content {
+  border-top: 2px solid gray;
+  margin-bottom: 2em;
+}
+
+.new_answer {
+  margin-top: 2em;
+}
+
+.errors {
+  background-color: red;
+  font-size: 5em;
+
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+
+}
+li {
+  margin: 1em;
+}
+
+.header {
+  background-color: rgb(124, 115, 115);
+  line-height: 20px;
+}
+
+.header ul{
+  list-style-type: none;
+
 }
