@@ -6,37 +6,38 @@
 
 
 <div class="question_container">
-  <a href="/questions/<%= @question.id %>/votes/1">
-    <div class='arrow-up'>
-    </div>
-  </a>
+    <a href="/questions/<%= @question.id %>/votes/1">
+      <div class='arrow-up'>
+      </div>
+    </a>
 
-<div class="vote_count">
-  <p><%=Vote.total(@question) %></p>
-</div>
-
-
-  <a href="/questions/<%= @question.id %>/votes/-1">
-    <div class='arrow-down'>
-    </div>
-  </a>
-
-<div class="question_body">
-  <h3><%= @question.title %></h3>
-  <h4><%= @question.body %></h4>
-  <h5>asked by <%= @question.user.username %></h5>
-    </div>
-      <% @q_comments.each do |comment| %>
-      <p><%= comment.body %></p>
-      <p>- <%= comment.user.username %></p>
-
-      <% end %>
+  <div class="vote_count">
+    <p id = "vote_for_questions"><%=Vote.total(@question) %></p>
+  </div>
 
 
-    <form id="question_comment" method="post" action="/questions/<%= @question.id %>/comments">
-      <input type="text" id="new_comment" name="body" placeholder="comment">
-      <input type="submit" value="comment">
-    </form>
+    <a href="/questions/<%= @question.id %>/votes/-1">
+      <div class='arrow-down'>
+      </div>
+    </a>
+
+  <div class="question_body">
+    <h3><%= @question.title %></h3>
+    <h4><%= @question.body %></h4>
+    <h5>asked by <%= @question.user.username %></h5>
+  </div>
+  <div id="show_question_comments">
+        <% @q_comments.each do |comment| %>
+        <p><%= comment.body %></p>
+        <p>- <%= comment.user.username %></p>
+
+        <% end %>
+  </div>
+
+      <form id="question_comment" method="post" action="/questions/<%= @question.id %>/comments">
+        <input type="text" id="new_question_comment" name="body" placeholder="comment">
+        <input type="submit" value="comment" id="question_comment_button">
+      </form>
 
 
 
@@ -44,39 +45,42 @@
 
 <div class="answer">
   <% @answers.each do |answer| %>
-    <div>
-      <% if @mode == "has a best" %>
-        <% if answer.id == @question.best_answer_id %>
-          <img src = "<%= APP_ROOT %>/public/nick.jpg">
+      <div>
+        <% if @mode == "has a best" %>
+          <% if answer.id == @question.best_answer_id %>
+            <img src = "<%= APP_ROOT %>/public/nick.jpg">
+          <% end %>
+        <% elsif @mode == "pick a best" %>
+          <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
         <% end %>
-      <% elsif @mode == "pick a best" %>
-        <a href = "/answers/<%= answer.id %>/best">This Is The Best Answer I've Ever Seen!!!</a>
+      </div>
+      <a href="/answers/<%= answer.id %>/votes/1" class="num<%= answer.id %>">
+      <div class='arrow-up'>
+      </div>
+      </a>
+
+       <div class="vote_count">
+        <p class="num<%= answer.id %>"><%= Vote.total(answer) %></p>
+      </div>
+
+
+      <a href="/answers/<%= answer.id %>/votes/-1" class="num<%= answer.id %>">
+      <div class='arrow-down'>
+      </div>
+      </a>
+      <h4><%= answer.body %></h4>
+      <h5>By: <%=answer.user.username%></h5>
+
+    <div class="answer<%= answer.id %>">
+      <% answer.comments.each do |comment| %>
+        <h5><%= comment.body %> </h5>
+        <p>-<%= comment.user.username %></p>
       <% end %>
+      <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
+        <input type="text" id="new_comment" name="body" placeholder="comment" class="answer<%= answer.id %>">
+        <input type="submit" value="comment" class="answer_comment_button">
+      </form>
     </div>
-    <a href="/answers/<%= answer.id %>/votes/1">
-    <div class='arrow-up'>
-    </div>
-    </a>
-
-     <div class="vote_count">
-      <p><%= Vote.total(answer) %></p>
-    </div>
-
-
-    <a href="/answers/<%= answer.id %>/votes/-1">
-    <div class='arrow-down'>
-    </div>
-    </a>
-    <h4><%= answer.body %></h4>
-    <h5>By: <%=answer.user.username%></h5>
-    <% answer.comments.each do |comment| %>
-      <h5><%= comment.body %> </h5>
-      <p>-<%= comment.user_id.username %></p>
-    <% end %>
-  <form id="answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
-    <input type="text" id="new_comment" name="body" placeholder="comment">
-    <input type="submit" value="comment">
-  </form>
   <% end %>
 
 
